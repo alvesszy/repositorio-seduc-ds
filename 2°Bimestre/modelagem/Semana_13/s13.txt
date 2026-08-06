@@ -1,0 +1,181 @@
+DROP TABLE IF EXISTS clientes_premiados;
+DROP TABLE IF EXISTS alertas;
+DROP TABLE IF EXISTS auditoria_pedidos;
+DROP TABLE IF EXISTS pedidos;
+DROP TABLE IF EXISTS clientes;
+
+CREATE TABLE clientes (
+ id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
+ nome TEXT NOT NULL,
+ email TEXT NOT NULL UNIQUE,
+ status_cliente TEXT DEFAULT 'Ativo',
+ tipo_cliente TEXT DEFAULT 'online',
+ data_cadastro TEXT DEFAULT (date('now'))
+);
+
+CREATE TABLE pedidos (
+ id_pedido INTEGER PRIMARY KEY AUTOINCREMENT,
+ id_cliente INTEGER NOT NULL,
+ data_pedido TEXT NOT NULL,
+ status TEXT NOT NULL
+);
+
+CREATE TABLE auditoria_pedidos (
+ id_auditoria INTEGER PRIMARY KEY AUTOINCREMENT,
+ id_pedido INTEGER NOT NULL,
+ status_antigo TEXT,
+ status_novo TEXT,
+ data_atualizacao TEXT NOT NULL
+);
+
+CREATE TABLE alertas (
+ id_alerta INTEGER PRIMARY KEY AUTOINCREMENT,
+ mensagem TEXT NOT NULL,
+ data_alerta TEXT NOT NULL
+);
+
+CREATE TABLE clientes_premiados (
+ id_premiacao INTEGER PRIMARY KEY AUTOINCREMENT,
+ id_cliente INTEGER NOT NULL,
+ nome TEXT NOT NULL,
+ data_premiacao TEXT NOT NULL
+);
+
+INSERT INTO clientes (nome, email, status_cliente, tipo_cliente, data_cadastro) VALUES
+('Ana Souza', 'ana@datassoft.com', 'Ativo', 'online', '2026-06-01'),
+('Bruno Lima', 'bruno@datassoft.com', 'Ativo', 'online', '2026-06-02'),
+('Carla Mendes', 'carla@datassoft.com', 'Ativo', 'presencial', '2026-06-03'),
+('Diego Alves', 'diego@datassoft.com', 'Inativo', 'online', '2026-06-04');
+
+INSERT INTO pedidos (id_cliente, data_pedido, status) VALUES
+(1, '2026-06-01', 'Pendente'),
+(1, '2026-06-02', 'Processando'),
+(1, '2026-06-03', 'Cancelado'),
+(2, '2026-06-04', 'Enviado'),
+(3, '2026-06-05', 'Pendente'),
+(3, '2026-06-06', 'Cancelado'),
+(4, '2023-01-10', 'Pendente');
+
+SELECT * FROM clientes;
+
+SELECT * FROM pedidos;
+
+INSERT INTO clientes_premiados (id_cliente, nome, data_premiacao)
+SELECT c.id_cliente, c.nome, datetime('now')
+FROM clientes AS c
+JOIN pedidos AS p ON c.id_cliente = p.id_cliente
+WHERE c.tipo_cliente = 'online'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM clientes_premiados AS cp
+    WHERE cp.id_cliente = c.id_cliente
+  )
+GROUP BY c.id_cliente, c.nome
+HAVING COUNT(p.id_pedido) >= 3;
+
+SELECT * FROM clientes_premiados;
+
+UPDATE pedidos
+SET status = 'Revisar'
+WHERE id_cliente IN (
+    SELECT id_cliente
+    FROM clientes
+    WHERE status_cliente = 'Inativo'
+);
+
+SELECT * FROM pedidos;
+
+DELETE FROM pedidos
+WHERE data_pedido < date('now', '-2 years')
+  AND status <> 'Enviado';
+
+SELECT * FROM pedidos;
+
+CREATE TRIGGER after_cliente_insert
+AFTER INSERT ON clientes
+FOR EACH ROW
+BEGIN
+    INSERT INTO alertas (mensagem, data_alerta)
+    VALUES ('Novo cliente cadastrado: ' || NEW.nome, datetime('now'));
+END;
+
+INSERT INTO clientes (nome, email, status_cliente, tipo_cliente)
+VALUES ('Elaine Rocha', 'elaine@datassoft.com', 'Ativo', 'online');
+
+SELECT * FROM alertas;
+
+CREATE TRIGGER after_pedido_update
+AFTER UPDATE ON pedidos
+FOR EACH ROW
+WHEN OLD.status <> NEW.status
+BEGIN
+    INSERT INTO auditoria_pedidos (
+        id_pedido,
+        status_antigo,
+        status_novo,
+        data_atualizacao
+    )
+    VALUES (
+        NEW.id_pedido,
+        OLD.status,
+        NEW.status,
+        datetime('now')
+    );
+END;
+
+UPDATE pedidos
+SET status = 'Processando'
+WHERE id_pedido = 1;
+
+SELECT * FROM auditoria_pedidos;
+
+CREATE TRIGGER before_cliente_delete
+BEFORE DELETE ON clientes
+FOR EACH ROW
+BEGIN
+    DELETE FROM pedidos
+    WHERE id_cliente = OLD.id_cliente;
+END;
+
+DELETE FROM clientes
+WHERE id_cliente = 3;
+
+SELECT * FROM clientes;
+
+SELECT * FROM pedidos;
+
+CREATE TRIGGER before_pedido_delete
+BEFORE DELETE ON pedidos
+FOR EACH ROW
+WHEN OLD.status = 'Enviado'
+BEGIN
+    SELECT RAISE(ABORT, 'Não é permitido excluir pedidos enviados.');
+END;
+
+DELETE FROM pedidos
+WHERE status = 'Enviado';
+
+SELECT * FROM clientes;
+SELECT * FROM pedidos;
+SELECT * FROM auditoria_pedidos;
+SELECT * FROM alertas;
+SELECT * FROM clientes_premiados;
+ 
+DDL cria ou altera a estrutura do banco de dados, enquanto DML manipula os dados dentro das tabelas.
+
+A chave primária é importante porque identifica cada registro de forma única.
+
+A chave estrangeira serve para ligar uma tabela a outra.
+
+O JOIN permite juntar informações de tabelas relacionadas.
+Usamos GROUP BY para agrupar registros e HAVING para filtrar os grupos.
+
+O NOT EXISTS evita inserir dados duplicados verificando se o registro já existe.
+
+A trigger automatiza ações no banco de dados quando ocorre INSERT, UPDATE ou DELETE.
+
+A auditoria é importante para registrar alterações e aumentar a segurança e controle dos dados.
+
+Bloquear a exclusão de pedidos enviados evita perda de informações importantes do histórico.
+
+A trigger funciona como um alarme automático que executa ações sozinho quando algum evento acontece no banco de dados.

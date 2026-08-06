@@ -1,0 +1,35 @@
+Prezados senhor(a),
+
+Venho comunicar que durante a última revisão de código, identificamos trechos que, embora funcionais, apresentam oportunidades de melhoria em sua estrutura interna.  Gostaríamos de propor uma refatoração contínua antes da entrega final. A refatoração de código é uma prática de desenvolvimento de software  que altera a estrutura interna do código sem modificar seu comportamento externo ou afetar suas funções. Essas pequenas alterações visam tornar o código mais legível e sustentável.
+
+Exemplo de código normal:
+
+fun processarPedidos(pedidos: List<Pedido>?) {
+    if (pedidos != null) {
+        for (i in 0 until pedidos.size) {
+            val pedido = pedidos[i]
+            
+            if (pedido.status == "APROVADO") {
+                if (pedido.valor > 1000) {
+                    println("Pedido VIP: " + pedido.id + " Valor: " + pedido.valor)
+                } else {
+                    println("Pedido Normal: " + pedido.id + " Valor: " + pedido.valor)
+                }
+            }
+        }
+    }
+}
+
+Exemplo do código refatorado:
+
+fun processarPedidos(pedidos: List<Pedido>?) {
+    pedidos?.filter { it.status == "APROVADO" }
+          ?.forEach { pedido ->
+              val tipo = if (pedido.valor > 1000) "VIP" else "Normal"
+              println("Pedido $tipo: ${pedido.id} Valor: ${pedido.valor}")
+          }
+}
+
+Atenciosamente,
+
+Gabriel Alves.

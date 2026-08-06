@@ -1,0 +1,133 @@
+CREATE TABLE vendas (
+    id_venda INT PRIMARY KEY AUTO_INCREMENT, 
+    produto VARCHAR(100),                 
+    quantidade INT,                         
+    valor_unitario DECIMAL(10,2),          
+    data_venda DATE                         
+);
+
+
+INSERT INTO vendas (produto, quantidade, valor_unitario, data_venda) VALUES
+
+('Teclado', 2, 150.00, '2026-03-05'), 
+('Mouse', 3, 80.00, '2026-03-05'),    
+('Monitor', 1, 900.00, '2026-03-06'), 
+('Teclado', 1, 150.00, '2026-03-10'),
+('Mouse', 2, 80.00, '2026-03-10'),
+('Notebook', 1, 3500.00, '2026-03-15'),
+('Monitor', 2, 900.00, '2026-03-20'),
+('Mouse', 5, 80.00, '2026-03-20'),
+
+('Teclado', 1, 150.00, '2026-04-02'),
+('Mouse', 1, 80.00, '2026-04-03'),
+('Monitor', 1, 900.00, '2026-04-10');
+
+SELECT * FROM vendas;
+
+SELECT COUNT(*) 
+/*o sam realiza a multiplicaçaõ do valor_unitario e a quantidade*/
+FROM vendas
+WHERE data_venda BETWEEN '2026-03-01' AND '2026-03-31';
+
+SELECT produto, 
+/*o sum realiza multiplicação do valor unitario e quantidade de produto*/
+       SUM(quantidade * valor_unitario) AS valor_total 
+FROM vendas
+GROUP BY produto;
+
+SELECT produto, 
+       SUM(quantidade) AS total
+FROM vendas
+GROUP BY produto
+ORDER BY total DESC 
+LIMIT 1;
+/*esse select realiza a soma de todos os produtos em ordem decrescente*/
+
+SELECT AVG(total_dia)
+FROM (
+    SELECT SUM(quantidade * valor_unitario) AS total_dia 
+    FROM vendas
+    WHERE data_venda BETWEEN '2026-03-01' AND '2026-03-31'
+    GROUP BY data_venda 
+) t;
+/*esse select reliza a media aritmetrica do mes de março*/
+
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    categoria VARCHAR(100),
+    preco DECIMAL(10,2)
+);
+
+-- Tabela de vendas
+CREATE TABLE vendas (
+    id_venda INT PRIMARY KEY AUTO_INCREMENT,
+    id_produto INT,
+    quantidade INT,
+    data_venda DATE,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
+);
+
+INSERT INTO produtos (nome, categoria, preco) VALUES
+('Teclado', 'Periféricos', 150.00),
+('Mouse', 'Periféricos', 80.00),
+('Monitor', 'Hardware', 900.00),
+('Notebook', 'Hardware', 3500.00);
+
+INSERT INTO vendas (id_produto, quantidade, data_venda) VALUES
+-- Fevereiro
+(1, 2, '2026-02-10'),
+(2, 3, '2026-02-12'),
+
+-- Março
+(1, 1, '2026-03-05'),
+(2, 2, '2026-03-05'),
+(3, 1, '2026-03-10'),
+(4, 1, '2026-03-15'),
+(2, 5, '2026-03-20'),
+
+-- Abril
+(1, 1, '2026-04-02'),
+(2, 1, '2026-04-03'),
+(3, 2, '2026-04-10');
+
+SELECT * FROM produtos;
+SELECT * FROM vendas;
+
+SELECT p.nome, SUM(v.quantidade) AS total
+FROM produtos p
+JOIN vendas v ON p.id_produto = v.id_produto
+WHERE v.data_venda >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+GROUP BY p.nome
+ORDER BY total DESC
+LIMIT 1;
+/*nesse select ocorre a aplicação do inner join, mostra o total de vendas nos ultimos 3 meses*/
+
+SELECT p.categoria, SUM(v.quantidade * p.preco) AS total
+FROM produtos p
+JOIN vendas v ON p.id_produto = v.id_produto
+WHERE v.data_venda BETWEEN '2026-03-01' AND '2026-03-31'
+GROUP BY p.categoria;
+/*mostra a soma total da categoria de podrutos*/
+
+SELECT AVG(quantidade)
+FROM vendas
+WHERE data_venda >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH);
+/*o select faz a media aritimetica dos ultimos tres meses*/
+
+SELECT 
+MAX(v.quantidade * p.preco) AS maior,
+MIN(v.quantidade * p.preco) AS menor
+FROM vendas v
+JOIN produtos p ON p.id_produto = v.id_produto
+WHERE v.data_venda >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH);
+/*esse select mostra em ordem descrescente do produto mais caro ao mais barato*/
+
+SELECT p.categoria, SUM(v.quantidade) AS total
+FROM produtos p
+JOIN vendas v ON p.id_produto = v.id_produto
+WHERE v.data_venda >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
+GROUP BY p.categoria
+ORDER BY total DESC
+LIMIT 1;
+/*esse select mostra em ordem descrescente a venda de categorias de produtos*/

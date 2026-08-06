@@ -1,0 +1,15 @@
+Atividade de Registro – Semana 2 
+Qual é a função de um Fragment em um aplicativo Android?
+ R: Um Fragment representa uma parte reutilizável da interface do usuário e do comportamento dentro de uma Activity.
+Como o Fragment se integra à Activity no projeto?
+R: Hospedagem: Um Fragment não existe sozinho; ele deve ser hospedado 
+por uma Activity.
+Container (Layout): A Activity define um contêiner (geralmente um FrameLayout) no seu layout XML, que servirá de espaço para o Fragment ser exibido.
+FragmentManager: A integração ocorre via FragmentManager e FragmentTransaction, que permitem adicionar, remover ou substituir fragments dinamicamente no contêiner.
+Estático vs. Dinâmico: Podem ser inseridos estaticamente (no XML da Activity com <fragment>) ou dinamicamente (via código, em tempo de execução).
+
+Por que você usaria um Fragment em vez de apenas uma Activity?
+R: Modularidade e Reutilização: Permite dividir uma tela complexa em partes menores e reutilizáveis em diferentes Activities.
+UI Adaptativa: Facilita o desenvolvimento para múltiplos dispositivos (ex: mostrar dois fragments lado a lado em um tablet, e apenas um em um celular).
+Performance e Fluidez: A troca de fragments dentro de uma mesma Activity é mais rápida e consome menos recursos do que iniciar uma nova Activity, gerando uma navegação mais fluida.
+Gerenciamento de Estado: Ideal para fluxos complexos, como abas (WhatsApp, por exemplo) ou assistentes (wizards), onde a Activity principal gerencia a troca de conteúdo sem precisar recarregar o contexto inteiro. 

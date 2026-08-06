@@ -1,0 +1,81 @@
+kubectl version --client
+Mostra a versão do kubectl instalada no ambiente.
+minikube version
+Mostra a versão do Minikube instalada.
+docker --version
+Mostra a versão do Docker instalada.
+minikube start --driver=docker
+Inicia um cluster Kubernetes local usando o Docker.
+kubectl get nodes
+Mostra os nodes (máquinas) do cluster e verifica se estão prontos para uso.
+minikube addons enable metrics-server
+Ativa o Metrics Server, responsável por coletar métricas de CPU e memória.
+kubectl get pods -n kube-system
+Mostra os Pods do sistema Kubernetes, incluindo o Metrics Server.
+kubectl wait --for=condition=available --timeout=180s
+deployment/metrics-server -n kube-system
+Aguarda até que o Metrics Server esteja totalmente disponível.
+kubectl top nodes
+Mostra o consumo de CPU e memória dos nodes do cluster.
+kubectl apply -f deployment.yaml
+Cria ou atualiza o Deployment da aplicação.
+kubectl apply -f service.yaml
+Cria ou atualiza o Service da aplicação.
+
+kubectl apply -f hpa.yaml
+Cria ou atualiza o Horizontal Pod Autoscaler (HPA).
+kubectl get pods
+Lista todos os Pods em execução.
+kubectl get deployment
+Mostra os Deployments criados no cluster.
+kubectl get service
+Mostra os Services disponíveis.
+kubectl get hpa
+Mostra os HPAs configurados e suas métricas.
+kubectl run -it --rm load-generator --image=busybox
+
+--restart=Never -- /bin/sh -c "while true; do wget -q -O-
+http://avatar-magico-svc; done"
+
+Cria um gerador de carga que faz requisições contínuas à aplicação para aumentar o uso
+da CPU.
+kubectl get hpa -w
+Monitora o HPA em tempo real, mostrando alterações de CPU e quantidade de réplicas.
+Ctrl + C
+Interrompe a execução do comando atual.
+kubectl delete pod load-generator
+Remove o Pod responsável por gerar carga.
+kubectl describe hpa avatar-magico-hpa
+Mostra informações detalhadas do HPA, incluindo eventos e escalonamentos realizados.
+kubectl delete -f hpa.yaml
+
+Remove o HPA criado pelo arquivo hpa.yaml.
+kubectl delete -f service.yaml
+Remove o Service criado pelo arquivo service.yaml.
+kubectl delete -f deployment.yaml
+Remove o Deployment criado pelo arquivo deployment.yaml.
+minikube stop
+Desliga o cluster Minikube.
+find . -name "*.yaml"
+Procura arquivos YAML dentro do projeto.
+ls
+Lista os arquivos da pasta atual.
+ls -la
+Lista todos os arquivos, incluindo ocultos, com detalhes.
+pwd
+Mostra o caminho da pasta atual.
+Resumo dos arquivos YAML
+deployment.yaml
+Define a aplicação que será executada no Kubernetes, quantas cópias ela terá e quais
+recursos utilizará.
+service.yaml
+Cria um endereço interno fixo para acessar a aplicação.
+hpa.yaml
+Configura o escalonamento automático, aumentando ou reduzindo Pods conforme o uso de
+CPU.
+
+devcontainer.json
+Configura o ambiente do GitHub Codespaces com as ferramentas necessárias para a
+atividade.
+README.md
+Documenta o projeto e explica seu objetivo e arquivos principais.

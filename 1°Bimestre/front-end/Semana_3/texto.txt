@@ -1,0 +1,15 @@
+Registro semana 3
+
+.container a { #estiliza a tag <a> dentro da classe ".container"
+    text-decoration: none;  # essa linha tira a decoração do texto e não deixa a tag <a> em formato de link
+    color: black; # Essa linha muda a cor das palavras na tag <a> deixando elas na cor preta e tirando a cor azul
+}
+ 
+.menu-lateral ul { # Estiliza a tag <ul> dentro da classe ".menu-lateral"
+    list-style: none; # Remove os marcadores que aparecem automaticamente em listas
+    padding: 0; # Usado para evitar o recuo.
+}
+ 
+.menu-lateral li {
+    margin: 10px 0; # O "10px;" define que a altura de cima e de baixo ira ter 10 pixels, e o 0 define a margin dos lados para 0.
+}

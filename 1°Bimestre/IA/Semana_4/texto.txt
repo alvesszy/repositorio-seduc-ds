@@ -1,0 +1,29 @@
+atividade 1
+
+1-  artgenius pode criar artes conceituais para meu projetos de jogo;
+
+      Textmaster pode escrever meu roteiro sobre o jogo;
+
+      Musicmaker pode criar a trilha sonora dele.
+
+2 – não. Porque cada uma tem sua especialidade.
+
+3-manter coerência com suas funções.
+
+atividade 2
+
+1-  porque testamos várias possibilidades.
+
+2 –  podemos persistir no começo, porém se não vermos resultado em um certo prazo, é hora de repensar.
+
+3- juntando os conhecimentos fazendo um “network”.
+
+AULA 2, PARTE 2:
+
+Opção A: Transformer, porque é mais versátil e multimodal.
+
+Opção B: Conforme na tabela.
+
+Opção C: VAE-GAN por ter baixo custo de hardware e eficiência de treinamento.
+
+NOMES: GABRIEL ALVES, JHONATA CARVALHO E GUSTAVO HONORATO.

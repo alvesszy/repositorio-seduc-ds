@@ -1,0 +1,16 @@
+	
+Boa Tarde,
+
+Busca de produtos: Barra de pesquisa pertence ao front-end enquanto a parte de banco de dados buscando os produtos pertence ao back-end.
+
+Carrinho de compras: O ícone pertence ao front-end por se tratar de algo visual, enquanto a parte de puxar o produto, valor e etc no banco de dados pertene ao back-end.
+
+Histórico de Pedidos: Segue a mesma lógica do carrinho de compras. Tendo sua parte visual pertencendo ao front-end e o histórico das informações que foram guardadas no sistema/banco de dados pertence ao back-end.
+
+Processamento de pagamentos: Também envolve ambos, pois a parte visual pertence ao front-end e a parte onde o sistema comunica com o banco envolvendo as transações e guardando as informações pertence ao back-end.
+
+Qualquer dúvida futura entre em contato por esse mesmo email.
+
+Atenciosamente;
+
+Gabriel Alves.

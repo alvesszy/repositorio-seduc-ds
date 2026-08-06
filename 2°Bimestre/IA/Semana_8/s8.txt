@@ -1,0 +1,61 @@
+AULA 1
+
+1.    Usando a analogia da aula, explique com suas palavras a diferença entre o processo direto e o processo inverso.
+
+Sua tarefa é criar um castelo idêntico ao original, apenas com a memória de como o vento o destruiu. Este é o processo inverso.
+
+Um castelo de areia começa perfeito, mas o vento vai desmanchando tudo aos poucos. Isso é o processo direto: algo organizado se transforma com o tempo por influências externas.
+
+2.    Qual é a única tarefa que a IA precisa realizar em cada passo do processo inverso para conseguir reconstruir uma imagem?
+
+ 
+
+Prever o ruído presente na imagem naquele passo (ou equivalentemente, prever como removê-lo).
+
+
+3.    Por que o step scheduler é tão importante? O que aconteceria se o "plano" do escultor fosse ruim?
+
+O step scheduler controla o ritmo e a ordem das mudanças no processo.
+
+Se ele for bom: o resultado sai estável, rápido e com qualidade.
+Se for ruim: pode ficar lento, instável ou gerar resultados errados, como um escultor com um plano mal feito.1.    Usando a analogia da aula, explique com suas palavras a diferença entre o processo direto e o processo inverso.
+
+Sua tarefa é criar um castelo idêntico ao original, apenas com a memória de como o vento o destruiu. Este é o processo inverso.
+
+Um castelo de areia começa perfeito, mas o vento vai desmanchando tudo aos poucos. Isso é o processo direto: algo organizado se transforma com o tempo por influências externas.
+
+2.    Qual é a única tarefa que a IA precisa realizar em cada passo do processo inverso para conseguir reconstruir uma imagem?
+
+ 
+
+Prever o ruído presente na imagem naquele passo (ou equivalentemente, prever como removê-lo).
+
+
+3.    Por que o step scheduler é tão importante? O que aconteceria se o "plano" do escultor fosse ruim?
+
+O step scheduler controla o ritmo e a ordem das mudanças no processo.
+
+Se ele for bom: o resultado sai estável, rápido e com qualidade.
+Se for ruim: pode ficar lento, instável ou gerar resultados errados, como um escultor com um plano mal feito.
+
+AULA 2:
+
+1.    Usando a analogia da aula, explique com suas palavras a diferença entre o processo direto e o processo inverso.
+
+Sua tarefa é criar um castelo idêntico ao original, apenas com a memória de como o vento o destruiu. Este é o processo inverso.
+
+Um castelo de areia começa perfeito, mas o vento vai desmanchando tudo aos poucos. Isso é o processo direto: algo organizado se transforma com o tempo por influências externas.
+
+2.    Qual é a única tarefa que a IA precisa realizar em cada passo do processo inverso para conseguir reconstruir uma imagem?
+
+ 
+
+Prever o ruído presente na imagem naquele passo (ou equivalentemente, prever como removê-lo).
+
+
+3.    Por que o step scheduler é tão importante? O que aconteceria se o "plano" do escultor fosse ruim?
+
+O step scheduler controla o ritmo e a ordem das mudanças no processo.
+
+Se ele for bom: o resultado sai estável, rápido e com qualidade.
+Se for ruim: pode ficar lento, instável ou gerar resultados errados, como um escultor com um plano mal feito.

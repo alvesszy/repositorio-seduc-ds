@@ -1,0 +1,22 @@
+*AULA 2*
+
+- Qual ferramenta de versionamento vocês escolheriam para a empresa mencionada no contexto?
+ Escolheria Github, porque levando em conta o orçamento e o tamanho da equipe, seria mais acessível além das funcionalidades pra ci/cd.
+
+*AULA 3*
+
+- Público ou privado? Por quê?
+A: Privado. Porque contém informações sigilosas dos funcionários.
+B: Pública. Porque cobre as informações sigilosas com segurança.
+
+- Quais riscos de cada escolha?
+A: Não ter a devida segurança com esses dados e acabarem caindo em mãos erradas.
+B: Conter informações sigilosas não protegidas, caindo em dominio público.
+
+- É possivel mudar no futuro?
+ 
+
+
+- Que medidas de segurança implementar?
+ Dar as permissões de administrador para pessoas responsáveis e confiáveis e bloquear acesso de pessoas não autorizadas.
+ 
