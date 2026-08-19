@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat em Tempo Real</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="chat">
+    <h1>Chat em Tempo Real</h1>
+    <p id="status">Status: conectando...</p>
+    <label for="name">Nome</label>
+    <input id="name" type="text" placeholder="Digite seu nome">
+    <label for="message">Mensagem</label>
+    <div class="linha-envio">
+      <input id="message" type="text" placeholder="Digite sua mensagem">
+      <button id="sendButton" type="button">Enviar</button>
+    </div>
+    <section id="messages" aria-live="polite" aria-label="Mensagens do chat"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
