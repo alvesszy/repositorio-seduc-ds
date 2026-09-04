@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat WebSocket</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="chat">
+        <h1>Chat em Tempo Real</h1>
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite seu nome"
+        >
+
+        <input
+            type="text"
+            id="mensagem"
+            placeholder="Digite sua mensagem"
+        >
+
+        <button onclick="enviarMensagem()">Enviar</button>
+
+        <div id="mensagens"></div>
+    </div>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:8081");
+
+        ws.onopen = () => {
+            console.log("Conectado ao servidor");
+        };
+
+        ws.onmessage = (event) => {
+            const mensagens = document.getElementById("mensagens");
+
+            const novaMensagem = document.createElement("p");
+
+            novaMensagem.textContent = event.data;
+
+            mensagens.appendChild(novaMensagem);
+        };
+
+        ws.onclose = () => {
+            console.log("Conexão encerrada");
+        };
+
+        function enviarMensagem() {
+            const nome = document.getElementById("nome").value;
+            const mensagem = document.getElementById("mensagem").value;
+
+            if (nome === "" || mensagem === "") {
+                alert("Preencha seu nome e sua mensagem.");
+                return;
+            }
+
+            const texto = nome + ": " + mensagem;
+
+            ws.send(texto);
+
+            document.getElementById("mensagem").value = "";
+        }
+    </script>
+
+</body>
+</html>
