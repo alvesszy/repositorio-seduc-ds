@@ -1,0 +1,22 @@
+Quando um sistema de inteligência artificial produz um
+resultado que causa dano, sobre quem recai a
+responsabilidade?
+
+O desenvolvedor ou o fabricante.
+
+De que forma o Art. 20 da LGPD poderia ser invocado
+neste contexto?
+
+Dando ao paciente o direito de exigir revisão humana e detalhada do diagnóstico.
+
+Caso o EU AI Act fosse aplicável, este sistema se enquadraria na categoria de Alto Risco, pois atua como um dispositivo médico com impacto direto na saúde e segurança humana.
+ 
+1. Com base no EU AI Act, classifiquem o AgentContrata 3.0 no nível de risco adequado. Justifiquem indicando a categoria de aplicação e ao menos duas obrigações que surgem dessa classificação.
+
+É de alto risco por atuar em recrutamento e emprego, exigindo supervisão humana para anular decisões automáticas equivocadas.
+
+ 
+
+2. A empresa afirma que o sistema é “apenas uma ferramenta de apoio à decisão humana”, pois a lista final ainda é aprovada pelo RH. Essa afirmação alteraria sua classificação de risco? Justifiquem.
+
+Não, pois da mesma forma ela continua desqualificando alguns candidatos e tomam decisões por si própria.
