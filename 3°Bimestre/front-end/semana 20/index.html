@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto Acessível</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="produto">
+
+        <img
+            class="produto-imagem"
+            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600"
+            alt="Camiseta azul de manga curta"
+        >
+
+        <h1 class="produto-titulo">Camiseta Azul</h1>
+
+        <p class="produto-descricao">
+            Camiseta confortável de algodão para uso no dia a dia.
+        </p>
+
+        <p class="produto-preco">R$ 59,90</p>
+
+        <div class="acoes">
+
+            <button
+                id="comprar"
+                class="btn btn-comprar"
+                aria-label="Adicionar camiseta azul ao carrinho"
+            >
+                Adicionar ao carrinho
+            </button>
+
+            <button
+                id="saiba-mais"
+                class="btn btn-secundario"
+            >
+                Saiba mais
+            </button>
+
+        </div>
+
+        <div
+            id="mensagem"
+            class="mensagem"
+            aria-live="polite"
+        ></div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
