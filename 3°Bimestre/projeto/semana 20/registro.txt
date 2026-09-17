@@ -1,0 +1,11 @@
+Aula 1
+
+1 - Introdução e apresentação do MVP:
+
+Elaborem uma descrição clara e objetiva do MVP, explicando sua proposta, principais funcionalidades e o problema que busca resolver.
+
+R: O MVP do Control Finance IA é um sistema de controle financeiro desenvolvido para ajudar os usuários a organizarem melhor suas finanças pessoais. A proposta é permitir o cadastro e acompanhamento de receitas, despesas e objetivos financeiros de forma simples e organizada.
+
+ 
+
+Link do forms: https://docs.google.com/forms/d/e/1FAIpQLScoMkRvQtUZQwCkX2_AMNJs8qSG7aYE9iquOvP2vxXrW8H20A/viewform?usp=publish-editor
