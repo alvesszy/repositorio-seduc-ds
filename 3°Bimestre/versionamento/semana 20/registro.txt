@@ -1,0 +1,23 @@
+   INÍCIO
+           ↓
+   Usuário envia mensagem
+           ↓
+      Computador/
+       Celular
+           ↓
+      Roteador Wi-Fi
+           ↓
+        Switch
+           ↓
+       Servidor
+           ↓
+   A mensagem foi
+     encaminhada?
+      ↙       ↘
+    NÃO        SIM
+     ↓          ↓
+  Erro/      Destinatário
+  reenvio      recebe
+                mensagem
+                   ↓
+                  FIM
