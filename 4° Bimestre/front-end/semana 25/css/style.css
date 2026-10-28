@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+h1 {
+  text-align: center;
+  margin: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.lazy {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.lazy.loaded {
+  opacity: 1;
+}

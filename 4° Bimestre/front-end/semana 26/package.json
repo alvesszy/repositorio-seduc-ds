@@ -1,0 +1,23 @@
+{
+  "name": "fastdev-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/core": "^8.0.9",
+    "@babel/preset-env": "^8.0.7",
+    "browser-sync": "^3.0.4",
+    "gulp": "^5.0.1",
+    "gulp-babel": "^8.1.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.106.1"
+  }
+}

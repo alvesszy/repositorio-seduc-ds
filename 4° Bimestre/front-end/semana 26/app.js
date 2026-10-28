@@ -1,0 +1,1 @@
+let greet=()=>{console.log("Bem-vindo ao FastDev Project!")};greet();

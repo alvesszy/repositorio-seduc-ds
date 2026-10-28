@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logística - Rastreamento de Entregas</title>
+  
+  <!-- Como deve ficar: -->
+<script src="https://googleapis.com" async defer></script>
+</head>
+<body>
+  <h1>Painel de Monitoramento de Logística</h1>
+  
+  <!-- Contêiner visual onde o mapa será renderizado -->
+  <div id="map" style="height: 500px; width: 100%;"></div>
+  
+  <script>
+    function initMap() {
+      // Coordenadas do Centro de Distribuição Principal (São Paulo)
+      const centroDistribuicao = { lat: -23.55052, lng: -46.633308 };
+      // Coordenadas do Ponto de Entrega do Cliente
+      const pontoEntrega = { lat: -23.55952, lng: -46.653308 };
+
+      // 1. Inicializa o mapa centralizado no Centro de Distribuição
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: centroDistribuicao,
+        zoom: 13,
+      });
+
+      // 2. Adiciona um Marcador Personalizado para o Centro de Distribuição
+      new google.maps.Marker({
+        position: centroDistribuicao,
+        map: map,
+        title: "Centro de Distribuição Principal",
+        label: "CD"
+      });
+
+      // 3. Adiciona um Marcador para o local de entrega
+      new google.maps.Marker({
+        position: pontoEntrega,
+        map: map,
+        title: "Ponto de Entrega - Cliente"
+      });
+
+      // 4. Traçado de rota simples ligando o CD ao ponto de entrega
+      const rotaCoordenadas = [centroDistribuicao, pontoEntrega];
+      const traçadoRota = new google.maps.Polyline({
+        path: rotaCoordenadas,
+        geodesic: true,
+        strokeColor: "#ff6347",
+        strokeOpacity: 1.0,
+        strokeWeight: 4,
+      });
+
+      // Desenha a linha da rota no mapa
+      traçadoRota.setMap(map);
+    }
+  </script>
+</body>
+</html>
